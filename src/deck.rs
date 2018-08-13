@@ -15,9 +15,8 @@ impl Deck {
 
     // removes the first number_of_cards from deck and returns them as a new Hand
     pub fn deal(&mut self, number_of_cards: usize) -> Hand {
-        let (first, rest) = self.cards.split_at(number_of_cards);
-        self.cards = rest.to_vec();
-        Hand{cards: first.to_vec()}
+        let drain = self.cards.drain(..number_of_cards);
+        Hand{cards: drain.collect()}
     }
 }
 
