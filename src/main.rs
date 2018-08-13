@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Copy, Clone, Debug)]
 enum Rank {
     Two,
@@ -29,6 +31,12 @@ struct Card {
     suit: Suit,
 }
 
+impl fmt::Display for Card {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?} of {:?}", self.rank, self.suit)
+    }
+}
+
 fn main() {
     let ranks = [
         Rank::Two, Rank::Three, Rank::Four, Rank::Five, Rank::Six, Rank::Seven,
@@ -45,4 +53,7 @@ fn main() {
             deck.push(Card{rank, suit});
         }
     }
+
+    println!("{:?}", deck);
+    println!("{}", deck.first().unwrap());
 }
