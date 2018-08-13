@@ -20,6 +20,7 @@ fn main() {
     }
 
     deck.shuffle();
+    deck.deal(5);
 
     println!("{}", deck.cards.first().unwrap());
 }
