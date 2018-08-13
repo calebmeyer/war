@@ -17,12 +17,28 @@ enum Rank {
     Ace,
 }
 
+impl Rank {
+    fn variants() -> std::slice::Iter<'static, Rank> {
+        [
+            Rank::Two, Rank::Three, Rank::Four, Rank::Five, Rank::Six,
+            Rank::Seven, Rank::Eight, Rank::Nine, Rank::Ten, Rank::Jack,
+            Rank::Queen, Rank::King, Rank::Ace,
+        ].iter()
+    }
+}
+
 #[derive(Copy, Clone, Debug)]
 enum Suit {
     Spades,
     Hearts,
     Clubs,
     Diamonds,
+}
+
+impl Suit {
+    fn variants() -> std::slice::Iter<'static, Suit> {
+        [Suit::Spades, Suit::Hearts, Suit::Clubs, Suit::Diamonds,].iter()
+    }
 }
 
 #[derive(Copy, Clone, Debug)]
@@ -37,23 +53,20 @@ impl fmt::Display for Card {
     }
 }
 
+#[derive(Debug)]
+struct Deck {
+    cards: Vec<Card>,
+}
+
 fn main() {
-    let ranks = [
-        Rank::Two, Rank::Three, Rank::Four, Rank::Five, Rank::Six, Rank::Seven,
-        Rank::Eight, Rank::Nine, Rank::Ten, Rank::Jack, Rank::Queen, Rank::King,
-        Rank::Ace,
-    ];
+    let mut deck = Deck{cards: Vec::with_capacity(52)};
 
-    let suits = [Suit::Spades, Suit::Hearts, Suit::Clubs, Suit::Diamonds,];
-
-    let mut deck: Vec<Card> = Vec::new();
-
-    for &suit in suits.iter() {
-        for &rank in ranks.iter() {
-            deck.push(Card{rank, suit});
+    for &suit in Suit::variants() {
+        for &rank in Rank::variants() {
+            deck.cards.push(Card{rank, suit});
         }
     }
 
     println!("{:?}", deck);
-    println!("{}", deck.first().unwrap());
+    println!("{}", deck.cards.first().unwrap());
 }
