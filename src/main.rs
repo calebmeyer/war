@@ -19,6 +19,7 @@ fn main() {
         }
     }
 
-    println!("{:?}", deck);
+    deck.shuffle();
+
     println!("{}", deck.cards.first().unwrap());
 }
