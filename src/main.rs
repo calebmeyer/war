@@ -22,6 +22,7 @@ fn main() {
     deck.shuffle();
     let hand = deck.deal(5);
 
-    println!("{:?}", hand);
-    println!("{:?}", deck);
+    println!("{}", hand);
+    // println!("{:?}", deck);
+    println!("{}", hand.cards.first().unwrap());
 }
