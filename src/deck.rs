@@ -31,10 +31,14 @@ type DiscardPile = Deck; // A discard pile is just a faceup deck
 
 impl fmt::Display for Deck {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let string = String::new();
+        let mut sep = false;
         for card in self.cards.iter() {
-            string.push_str(&fmt::format!("{}, ", card));
+            if sep {
+                write!(f, ", ")?;
+            }
+            write!(f, "{}", card)?;
+            sep = true;
         }
-        write!(f, "{}", string)
+        Ok(())
     }
 }
