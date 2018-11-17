@@ -17,18 +17,16 @@ pub struct Deck {
     pub cards: Vec<Card>,
 }
 
-impl Deck {
-    pub fn new() -> Deck {
-        let mut deck = Deck{cards: Vec::with_capacity(52)};
 
+impl Deck {
+    pub fn init(&mut self) {
         for &suit in Suit::variants() {
             for &rank in Rank::variants() {
-                deck.cards.push(Card{rank, suit});
+                self.cards.push(Card{rank, suit});
             }
         }
 
-        deck.shuffle();
-        deck
+        self.shuffle();
     }
 
     pub fn shuffle(&mut self) {

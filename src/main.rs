@@ -2,10 +2,11 @@ mod deck;
 use deck::Deck;
 
 fn main() {
-    let mut deck = Deck.new();
+    let mut mydeck = Deck{ cards: Vec::with_capacity(52) };
+    mydeck.init();
 
-    let hand = deck.deal(5);
-    let hand2 = deck.deal(5);
+    let hand = mydeck.deal(5);
+    let hand2 = mydeck.deal(5);
 
     println!("{}", hand);
     println!("{}", hand.cards.first().unwrap());
