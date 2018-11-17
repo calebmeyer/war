@@ -1,8 +1,16 @@
 extern crate rand;
 
 use std::fmt;
-use card::Card;
 use self::rand::{thread_rng, Rng};
+
+// mod rank;
+use war::rank::Rank;
+
+// mod ::suit;
+use ::suit::Suit;
+
+// mod ::card;
+use super::card::Card;
 
 #[derive(Debug)]
 pub struct Deck {
@@ -10,6 +18,19 @@ pub struct Deck {
 }
 
 impl Deck {
+    pub fn new() -> Deck {
+        let mut deck = Deck{cards: Vec::with_capacity(52)};
+
+        for &suit in Suit::variants() {
+            for &rank in Rank::variants() {
+                deck.cards.push(Card{rank, suit});
+            }
+        }
+
+        deck.shuffle();
+        deck
+    }
+
     pub fn shuffle(&mut self) {
         thread_rng().shuffle(self.cards.as_mut_slice());
     }
