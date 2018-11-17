@@ -1,6 +1,6 @@
 use std::fmt;
-use rank::Rank;
-use suit::Suit;
+use deck::rank::Rank;
+use deck::suit::Suit;
 
 #[derive(Copy, Clone, Debug)]
 pub struct Card {

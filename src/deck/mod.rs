@@ -3,14 +3,14 @@ extern crate rand;
 use std::fmt;
 use self::rand::{thread_rng, Rng};
 
-// mod rank;
-use war::rank::Rank;
+mod rank;
+use self::rank::Rank;
 
-// mod ::suit;
-use ::suit::Suit;
+mod suit;
+use self::suit::Suit;
 
-// mod ::card;
-use super::card::Card;
+mod card;
+use self::card::Card;
 
 #[derive(Debug)]
 pub struct Deck {
