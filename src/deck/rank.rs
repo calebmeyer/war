@@ -1,6 +1,6 @@
 use std;
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Ord, PartialOrd, Eq, PartialEq)]
 pub enum Rank {
     Two,
     Three,
