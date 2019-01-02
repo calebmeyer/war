@@ -9,7 +9,7 @@ use self::rank::Rank;
 mod suit;
 use self::suit::Suit;
 
-mod card;
+pub mod card;
 use self::card::Card;
 
 #[derive(Debug)]
